@@ -120,7 +120,8 @@ export default function Home() {
   const handlePhotoClick = () => {
     setShotFired(true);
     try {
-      const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
       const mainOsc = audioContext.createOscillator();
       const mainGain = audioContext.createGain();
       mainOsc.connect(mainGain);
