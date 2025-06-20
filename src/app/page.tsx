@@ -16,9 +16,6 @@ import {
   LifeBuoy, 
   Gavel,
   Crown,
-  Award,
-  Gem,
-  Flame,
   Linkedin,
   Lock,
   Vibrate,
@@ -82,7 +79,7 @@ export default function Home() {
         });
 
         // Section animations
-        gsap.default.utils.toArray("h2").forEach((h2: any) => {
+        gsap.default.utils.toArray<HTMLElement>("h2").forEach((h2) => {
           gsap.default.from(h2, {
             scrollTrigger: {
               trigger: h2,
@@ -112,7 +109,7 @@ export default function Home() {
       } catch (error) {
         console.error('GSAP initialization failed:', error);
         // Fallback: just show the content without animations
-        document.body.style.opacity = '1';
+        if (document.body) document.body.style.opacity = '1';
       }
     };
 
@@ -143,7 +140,7 @@ export default function Home() {
     };
   }, [isTouchDevice]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isTouchDevice) return;
     setScopePosition({ x: e.clientX, y: e.clientY });
   };
@@ -274,7 +271,7 @@ export default function Home() {
           </p>
 
           <div className="relative inline-block">
-            <Image 
+            <Image
               ref={photoRef}
               src="/zdjecie.jpg" 
               alt="Zdjęcie poszukiwanego Pawła Niedermaiera"
@@ -295,17 +292,17 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
-            KRYPTONIM: "WŁADCA CISZY"
+            KRYPTONIM: &quot;WŁADCA CISZY&quot;
           </h1>
 
           <p className="mt-2 max-w-3xl mx-auto text-base md:text-lg text-gray-400">
-            (Znany również jako "Mistrz Wibroakustyki", "Profesor AI" oraz "Architekt" )
+            (Znany również jako &quot;Mistrz Wibroakustyki&quot;, &quot;Profesor AI&quot; oraz &quot;Architekt&quot;)
           </p>
 
           <div className="mt-8 max-w-2xl mx-auto glass-effect rounded-lg p-4 border border-yellow-500/30">
             <h3 className="font-bold text-yellow-400 tracking-wider">OSTRZEŻENIE</h3>
             <p className="text-gray-300">
-              Kontakt grozi eksplozją innowacji i bezkompromisową realizacją projektów. 
+              Kontakt grozi eksplozją innowacji.
             </p>
             <h3 className="font-bold text-green-400 tracking-wider mt-3">NAGRODA</h3>
             <p className="text-gray-300">
